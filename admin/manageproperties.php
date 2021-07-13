@@ -33,6 +33,7 @@
                     <td>Availability Type</td>
                     <td>location</rd>
                     <td>Manage Data</td>
+                    <td>Sharable Link</td>
                     <td>edit</td>
                     <td>delete</td>
                 </tr>
@@ -48,6 +49,15 @@
                         $str1 = "select * from property_detailes where property_id=".$row['id'].";";
                         $result1 = mysqli_query($conn,$str1);
                         $num2 = mysqli_num_rows($result1);
+
+                        /* code to enc id */
+                        
+                        $eid = $row['id'];
+                        $encryptionMethod = "AES-256-CBC";
+                        $secretHash = "cVb67YtfAz328oOikl96vBn";
+                        $iv = "adfrf54dmnlo09ax";
+                        $encid = openssl_encrypt($eid,$encryptionMethod,$secretHash, 0, $iv);
+                        /* code to enc id */
                 ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
@@ -59,6 +69,7 @@
                     <td><?php echo $row['property_availability_type']; ?></td>
                     <td><?php echo $row['location']; ?></td>
                     <td><a href="managedata.php?pid=<?php echo $row['id']; ?>">Manage Data [ <?php echo $num2; ?> ]</a></td>
+                    <td><a href="../property.php?id=<?php echo $encid; ?>"> link </a></td>
                     <td><a href="editpropertydetailes.php?pid=<?php echo $row['id']; ?>">Edit</a></td>
                     <td><a href="dbprocessor/deleteproperty.php?pid=<?php echo $row['id']; ?>">Delete</a></td>
                 </tr>

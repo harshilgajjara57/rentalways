@@ -1,10 +1,17 @@
 <?php
-    $id = $_GET['id'];
+    $eid = $_GET['id'];
+    $encryptionMethod = "AES-256-CBC";
+    $secretHash = "cVb67YtfAz328oOikl96vBn";
+    $iv = "adfrf54dmnlo09ax";
+    $encid = openssl_decrypt($eid,$encryptionMethod,$secretHash, 0, $iv);
+    
+    $id = $encid;
     include("admin/dbprocessor/connector.php");
     $str = "SELECT * FROM property_stream_img where property_id=".$id.";";
     $result=mysqli_query($conn,$str);
     $str1 = "SELECT * FROM properties where id=".$id.";";
     $result1=mysqli_query($conn,$str1);
+    $nums = mysqli_num_rows($result1);
     $row1 = mysqli_fetch_array($result1);
     $str2 = "SELECT * FROM property_detailes where property_id=".$id.";";
     $result2 = mysqli_query($conn,$str2);
@@ -19,6 +26,14 @@
     <title>Property</title>
 </head>
 <body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans'">
+<?php
+    if($nums==0)
+    {
+        echo "<h1 style='text-align:center;margin-top:100px;'> Something Went Wrong... </h1>";
+    }
+    else
+    {
+?>
     <br>
     <!-- #region Jssor Slider Begin -->
     <!-- Generator: Jssor Slider Composer -->
@@ -220,6 +235,7 @@
     </div>
     <script type="text/javascript">jssor_1_slider_init();
     </script>
+    <?php } ?>
     <!-- #endregion Jssor Slider End -->
 </body>
 </html>
