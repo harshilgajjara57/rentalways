@@ -1,7 +1,7 @@
 <?php
     $eid = $_GET['id'];
     $encryptionMethod = "AES-256-CBC";
-    $secretHash = "cVb67YtfAz328oOikl96vBn";
+    $secretHash = "rentalways_";
     $iv = "adfrf54dmnlo09ax";
     $encid = openssl_decrypt($eid,$encryptionMethod,$secretHash, 0, $iv);
     

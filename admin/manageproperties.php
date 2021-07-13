@@ -54,7 +54,7 @@
                         
                         $eid = $row['id'];
                         $encryptionMethod = "AES-256-CBC";
-                        $secretHash = "cVb67YtfAz328oOikl96vBn";
+                        $secretHash = "rentalways_";
                         $iv = "adfrf54dmnlo09ax";
                         $encid = openssl_encrypt($eid,$encryptionMethod,$secretHash, 0, $iv);
                         /* code to enc id */
