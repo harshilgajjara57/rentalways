@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("dbprocessor/sessioncheck.php");
     include("dbprocessor/connector.php");
     $pid=$_GET['pid'];
     $str = "select * from property_detailes where property_id=".$pid.";";

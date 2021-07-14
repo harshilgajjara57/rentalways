@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("dbprocessor/sessioncheck.php");
     include("dbprocessor/connector.php");
     $id = $_GET['pid'];
     $str = "select * from property_stream_img where property_id=".$id.";";

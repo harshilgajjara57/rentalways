@@ -1,3 +1,7 @@
+<?php
+session_start();
+    include("dbprocessor/sessioncheck.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

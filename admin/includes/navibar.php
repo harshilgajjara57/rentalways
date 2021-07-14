@@ -25,6 +25,9 @@
         <li class="nav-item">
           <a class="nav-link" id="myprofile" href="myprofile.php">MyProfile</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dbprocessor/logout.php">Logout</a>
+        </li>
       </ul>
     </div>
   </div>

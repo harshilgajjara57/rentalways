@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include("dbprocessor/sessioncheck.php");
     include("dbprocessor/connector.php");
     $str = "select * from properties";
     $result = mysqli_query($conn,$str);
